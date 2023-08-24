@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loging_page_ui/screens/sign_up_screen.dart';
+import 'package:loging_page_ui/widget/form_feild_widget.dart';
+import 'package:loging_page_ui/widget/login_button_widget.dart';
 
 class LoginPageUi extends StatefulWidget {
   const LoginPageUi({super.key});
@@ -13,7 +16,7 @@ class _LoginPageUiState extends State<LoginPageUi> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage(
                 "image/login.png",
@@ -25,50 +28,54 @@ class _LoginPageUiState extends State<LoginPageUi> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Welcome\nBack",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 240,
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Enter Email",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15))),
+              // TextFormField(
+              //   decoration: InputDecoration(
+              //       hintText: "Enter Email",
+              //       border: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(15))),
+              // ),
+              const SizedBox(
+                height: 25,
               ),
-              SizedBox(height: 25,),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Enter Password",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15))),
+              const FormFeildWidget(name: "Enter Mail",),
+              const SizedBox(height: 15,),
+              const FormFeildWidget(name: "Enter Password",),
+              const SizedBox(
+                height: 30,
               ),
-              SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("LOGIN",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-                  CircleAvatar(
-                    backgroundColor: Colors.black87,
-                    child: IconButton(
-                        onPressed: (){}, icon: Icon(Icons.arrow_right_alt_outlined,color: Colors.white,)),
-                  )
-                ],
+              const LoginButtonWidget(),
+              const SizedBox(
+                height: 40,
               ),
-              SizedBox(height: 40,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TextButton(
+                      onPressed: () {
 
-                      onPressed: (){}, child: Text("SIGN UP",style: TextStyle(color: Colors.black45),)),
-                  TextButton(onPressed: (){}, child: Text("FORGET PASSWORD",style: TextStyle(color: Colors.black45),),)
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateAccount()));
+                      },
+                      child: const Text(
+                        "SIGN UP",
+                        style: TextStyle(color: Colors.black45),
+                      )),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "FORGET PASSWORD",
+                      style: TextStyle(color: Colors.black45),
+                    ),
+                  )
                 ],
               )
             ],
@@ -78,3 +85,5 @@ class _LoginPageUiState extends State<LoginPageUi> {
     );
   }
 }
+
+
